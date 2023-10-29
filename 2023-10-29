@@ -1,0 +1,69 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+using namespace std;
+int* func()
+{
+	int* a = new int(10);//使用new关键字可以在堆区上申请空间，返回类型时（int*），返回创建的这个值的地址，在函数内返回时不会销毁，
+	return a;
+}
+void test()
+{
+	int* p = func();
+	cout << *p << endl;
+	cout << *p << endl;
+	cout << *p << endl;
+	delete p;
+}
+//利用new在堆区开辟数组
+void arr()
+{
+	int*arr=new int[10];
+	for (int i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	//释放堆区数组
+	delete[] arr;
+}
+void swap(int& a, int& b)
+{
+	int tmp = a;
+	a = b;
+	b = tmp;
+}
+int& func1()
+{
+	int a = 10;
+	return a;
+}
+int& func2()
+{
+	static int a = 10;
+	return a;
+}
+int main()
+{
+	//test();
+	//arr();
+	/*int a = 10;
+	int b = 20;
+	swap(a, b);
+	cout << a << endl;
+	cout << b << endl;*/
+	/*int& tmp = func1();
+	cout << tmp << endl;//第一次调用答案是正确的，原因时编译器做了保留
+	cout << tmp << endl;//第二次错误*/
+	int& tmp = func2();
+	cout << tmp << endl;
+	cout << tmp << endl;
+	cout << tmp << endl;
+	func2() = 1000;
+	cout << tmp << endl;
+	cout << tmp << endl;
+
+	return 0;
+}
