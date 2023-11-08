@@ -1,0 +1,111 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+/*#include<iostream>
+#include<string>
+using namespace std;
+//设计一个学生类，属性有姓名和学号
+//可以给姓名和学号赋值，可以显示学生的姓名和学号
+
+//设计学生类
+class Student
+{
+public: //公共权限
+
+	//类中的属性和成员，统一称为成员
+	// 属性  成员属性  成员变量
+	// 行为 成员函数  成员方法
+	
+	//属性
+	string name;//姓名
+	int id;//学号
+	//行为
+	//显示姓名和学号
+	void show()
+	{
+		cout << name << " " << id<<endl;
+	}
+
+	//给姓名赋值
+	void setname(string my_name)
+	{
+		name = my_name;
+	}
+};
+int main()
+{
+	//创建一个具体的学生   实例化对象
+	Student s1;
+	//给s1对象 进行属性赋值操作
+	s1.name = "zhang";
+	s1.setname("li");
+	s1.id = 123456;
+	//显示学生信息
+	s1.show();
+	Student s2;
+	s2.name = "wang";
+	s2.id = 456;
+	s2.show();
+ 	return 0;
+}*/
+
+
+//访问权限
+//公共权限  public  成员  类内可以访问  类外可以访问
+//保护权限  protected  成员  类内可以访问  类外不可以访问    儿子可以访问父亲中的保护内容
+//私有权限  private  成员  类内可以访问  类外不可以访问   儿子不可以访问父亲中的保护内容
+
+
+/*#include<iostream>
+#include<string>
+using namespace std;
+class Person
+{
+	//类内都可以访问
+public:
+	//公共权限
+	string name;
+protected:
+	//保护权限
+	string car;
+private:
+	//私有权限
+	int password;
+public:
+	void func()
+	{
+		name = "w";
+		car = "bmw";
+		password = 123456;
+	}
+};
+int main()
+{
+	Person p1;
+	p1.name = "l";
+	//p1.car;//类外不可以访问
+
+	return 0;
+}*/
+
+
+//strcut 和 class的区别
+//struct 默认权限是 公共 public
+//class 默认权限是 私有 private
+/*#include<iostream>
+using namespace std;
+class c1
+{
+	int a;//默认 私有
+};
+struct c2
+{
+	int a;//默认 公共
+};
+int main()
+{
+	c1 m;
+	c2 n;
+	m.a = 10;//不可访问，私有
+	n.a = 20;//公共
+
+	return 0;
+}*/
