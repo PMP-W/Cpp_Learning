@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	//创建一个向量容器储存int
+	vector<int> vec;
+	//显示vec的原始大小
+	cout << vec.size() << endl;//0
+	int i = 0;
+	//推入5个值到vec中
+	for (i = 0; i < 5; i++)
+	{
+		vec.push_back(i);//push_back( ) 成员函数在向量的末尾插入值，如果有必要会扩展向量的大小
+	}
+	//显示vec扩展后的大小
+	cout << vec.size() << endl;//5
+	//访问向量中的5个值
+	for (i = 0; i < 5; i++)
+	{
+		cout << vec[i] << " ";
+	}
+	cout << endl;
+	//使用迭代器访问
+	vector<int>::iterator v = vec.begin();//begin( ) 函数返回一个指向向量开头的迭代器
+	while (v != vec.end())//end()函数返回一个指向向量末尾的迭代器
+	{
+		cout << *v << " ";
+		v++;
+	}
+	return 0;
+}
