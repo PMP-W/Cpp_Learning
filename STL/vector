@@ -1,33 +1,150 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//int main()
+//{
+//	//创建一个向量容器储存int
+//	vector<int> vec;
+//	//显示vec的原始大小
+//	cout << vec.size() << endl;//0
+//	int i = 0;
+//	//推入5个值到vec中
+//	for (i = 0; i < 5; i++)
+//	{
+//		vec.push_back(i);//push_back( ) 成员函数在向量的末尾插入值，如果有必要会扩展向量的大小
+//	}
+//	for (i = 0; i < 5; i++)
+//	{
+//		int m = 0;
+//		cin >> m;
+//		vec.push_back(m);
+//	}
+//	//显示vec扩展后的大小
+//	cout << vec.size() << endl;//5
+//	//访问向量中的5个值  访问时才可以用下标，输入时不可以
+//	for (i = 0; i < 5; i++)
+//	{
+//		cout << vec[i] << " ";
+//	}
+//	cout << endl;
+//	//使用迭代器访问
+//	vector<int>::iterator v = vec.begin();//begin( ) 函数返回一个指向向量开头的迭代器
+//	while (v != vec.end())//end()函数返回一个指向向量末尾的迭代器
+//	{
+//		cout << *v << " ";
+//		v++;
+//	}
+//	return 0;
+//}
+
+
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//int main()
+//{
+//	int b[10] = { 1,2,3,4,8,9,10,11,12,13 };
+//	vector<int>a(10, 5);
+//	//vector<int>num(10,1);
+//	//vector<int>num(b, b + 3);
+//	//vector<int>num(a.begin(), a.end()-3);
+//	vector<int>num(a);
+//	num.assign(5, 0);//会改变初始化的值，现在num中有5个0
+//	num.clear();//清空向量中所有元素
+//	cout << num.empty()<<endl;//判断向量是否为空
+//	num.push_back(54);
+//	num.assign(10, 5);
+//	num.erase(num.begin(), num.begin()+4);//删除0到4（第一个元素的位置是0，最后不包括第四个元素）的元素，不能删别的向量
+//	num.insert(num.begin()+1, -1);//将插入的元素放在num.begin()+1的位置，即插入到原来在此位置的元素之前	
+//	num.insert(num.begin() + 1, b + 3, b + 6);//b为数组，在num的第一个元素（从第0个元素算起）的位置插入b的第三个元素(下标为3)到第5个元素（下标为5）（不包括b+6）
+//	vector<int>::iterator v = num.begin();
+//	while (v != num.end())
+//	{
+//		cout << *v << " ";
+//		v++;
+//	}
+//	cout <<endl<< num.capacity();//10
+//	num.resize(20);//将num的现有元素个数调整至20个，多则删，少则补，其值随机(目前看来好像vs上新增的元素的值都是0)
+//	cout << endl << num.capacity()<<endl;//20
+//	vector<int>::iterator v1 = num.begin();
+//	while (v1 != num.end())
+//	{
+//		cout << *v1 << " ";
+//		v1++;
+//	}
+//
+//	return 0;
+//}
+
+//赋值方式
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//int main()
+//{
+//	vector<int>a;
+//	vector<int>b;
+//	for (int i = 0; i < 5; i++)
+//	{
+//		b.push_back(i);
+//		cout << b[i] << " ";
+//	}
+//	cout << endl;
+//	for (vector<int>::iterator it = b.begin(); it < b.end(); it++)
+//	{
+//		a.push_back(*it);
+//	}
+//	vector<int>::iterator v = a.begin();
+//	while (v != a.end())
+//	{
+//		cout << *v << " ";
+//		v++;
+//	}
+//
+//	return 0;
+//}
+
+//常用算法
 #include<iostream>
+#include<algorithm>
 #include<vector>
 using namespace std;
 int main()
 {
-	//创建一个向量容器储存int
-	vector<int> vec;
-	//显示vec的原始大小
-	cout << vec.size() << endl;//0
-	int i = 0;
-	//推入5个值到vec中
-	for (i = 0; i < 5; i++)
+	vector<int>num;
+	vector<int>b(10, 5);
+	num.push_back(5);
+	num.push_back(6);
+	num.push_back(-1);
+	num.push_back(0);
+	num.push_back(8);
+	sort(num.begin(), num.end());
+	reverse(num.begin(), num.end());
+	vector<int>::iterator v = num.begin();
+	vector<int>::iterator v1 = b.begin();
+	while (v1 != b.end())
 	{
-		vec.push_back(i);//push_back( ) 成员函数在向量的末尾插入值，如果有必要会扩展向量的大小
-	}
-	//显示vec扩展后的大小
-	cout << vec.size() << endl;//5
-	//访问向量中的5个值
-	for (i = 0; i < 5; i++)
-	{
-		cout << vec[i] << " ";
+		cout << *v1 << " ";
+		v1++;
 	}
 	cout << endl;
-	//使用迭代器访问
-	vector<int>::iterator v = vec.begin();//begin( ) 函数返回一个指向向量开头的迭代器
-	while (v != vec.end())//end()函数返回一个指向向量末尾的迭代器
+	copy(num.begin(), num.end(), b.begin() + 1); // 把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，
+	                                             //从b.begin() + 1的位置（包括它）开始复制，覆盖掉原有元素
+	while (v != num.end())
 	{
 		cout << *v << " ";
 		v++;
 	}
+	cout << endl;
+	v1 = b.begin();
+	while (v1 != b.end())
+	{
+		cout << *v1 << " ";
+		v1++;
+	}
+	cout << endl;
+
+	cout << *find(num.begin(), num.end(), -1);//在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置
 	return 0;
 }
